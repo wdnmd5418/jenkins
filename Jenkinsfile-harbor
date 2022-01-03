@@ -1,5 +1,5 @@
 // 镜像仓库地址
-def registry = "harbor.wzlinux.com"
+def registry = "https://hub.docker.com/repository/docker/jingyvsheng"
 // 镜像仓库项目
 def project = "gitlab-pipeline"
 // 镜像名称
@@ -7,7 +7,7 @@ def app_name = "citest"
 // 镜像完整名称
 def image_name = "${registry}/${project}/${app_name}:${BUILD_NUMBER}"
 // git仓库地址
-def git_address = "http://gitlab.wzlinux.com/root/gitlab-pipeline.git"
+def git_address = "https://github.com/wdnmd5418/jenkins.git"
 // fenzhi分支
 def branch = "*/master"
 
@@ -33,18 +33,6 @@ podTemplate(
         //    sh "mvn clean package -Dmaven.test.skip=true"
             sh "ls"
         }
-        stage('构建镜像') {
-            container('docker') {
-                stage('打包镜像') {
-                   withCredentials([usernamePassword(credentialsId: "${harbor_auth}", passwordVariable: 'password', usernameVariable: 'username')]) {
-                   sh """
-                    docker build -t ${image_name} .
-                    docker login -u ${username} -p '${password}' ${registry}
-                    docker push ${image_name}
-                    """
-                    }
-                }  
-            }    
-        }
+        
     }
 }
