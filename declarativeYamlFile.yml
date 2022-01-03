@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: declarative-pipeline
+spec:
+  containers:
+  - name: jnlp
+    image: wangzan18/jenkins-agent:3.40-1-alpine
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  - name: docker
+    image: docker:19.03.1-dind
+    command:
+    - cat
+    tty: true
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+    - mountPath: "/var/run/docker.sock"
+      name: dockersock
+  volumes:
+  - name: dockersock
+    hostPath:
+      path: "/var/run/docker.sock"
+  - emptyDir:
+      medium: ""
+    name: "workspace-volume"
