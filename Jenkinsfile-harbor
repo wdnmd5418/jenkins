@@ -12,8 +12,8 @@ def git_address = "http://gitlab.wzlinux.com/root/gitlab-pipeline.git"
 def branch = "*/master"
 
 // 认证
-def harbor_auth = "9f42dff1-11ab-4124-a847-fcc10f1d3af6"
-def gitlab_auth = "cca83969-0fe3-4aa8-9c37-172f19d7338f"
+def harbor_auth = "8871e929-daa9-45ee-b339-e3d6df94e15f"
+def gitlab_auth = "cbba63e0-65ef-4675-8b38-aad30a9d2d64"
 
 podTemplate(
     label: 'jenkins-agent', 
