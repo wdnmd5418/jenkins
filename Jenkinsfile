@@ -29,11 +29,8 @@ def nodePort = "30666"
 podTemplate(
     label: 'jenkins-agent', 
     cloud: 'kubernetes',
-    namespace: "kube-ops",
-    containers: [
-       containerTemplate(name: 'jnlp', image: "wangzan18/jenkins-agent:3.40-1-alpine")
-       
-    ]){
+    namespace: "kube-ops"
+    ){
     node('jenkins-agent'){
         stage('拉取代码') { // for display purposes
             checkout([$class: 'GitSCM',branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: "${gitlab_auth}", url: "${git_address}"]]])
