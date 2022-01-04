@@ -31,7 +31,7 @@ podTemplate(
     cloud: 'kubernetes',
     namespace: "kube-ops",
     containers: [
-       containerTemplate(name: 'jnlp', image: "wangzan18/jenkins-agent:3.40-1-alpine"),
+       containerTemplate(name: 'jnlp', image: "wangzan18/jenkins-agent:3.40-1-alpine")
        
     ]){
     node('jenkins-agent'){
