@@ -32,7 +32,7 @@ podTemplate(
     namespace: "kube-ops",
     containers: [
        containerTemplate(name: 'jnlp', image: "wangzan18/jenkins-agent:3.40-1-alpine"),
-       containerTemplate(name: 'docker', image: 'docker:19.03.1-dind', ttyEnabled: true, command: 'cat')
+       
     ]){
     node('jenkins-agent'){
         stage('拉取代码') { // for display purposes
