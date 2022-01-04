@@ -36,7 +36,7 @@ podTemplate(
             checkout([$class: 'GitSCM',branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: "${gitlab_auth}", url: "${git_address}"]]])
         }
         stage('代码编译') {
-        //    sh "mvn clean package -Dmaven.test.skip=true"
+            sh "mvn clean package -Dmaven.test.skip=true"
             sh "ls"
         }
         stage('构建镜像') {
