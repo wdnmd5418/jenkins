@@ -29,6 +29,7 @@ def nodePort = "30666"
 podTemplate(
     label: 'jenkins-agent', 
     cloud: 'kubernetes',
+    namespace: "kube-ops",
     containers: [
        
     ]){
